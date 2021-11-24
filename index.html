@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <!-- Navigation -->
     <div class="b-nav">
         <li><a class="b-link" target="_blank" href="https://coaie.org"><svg 
             xmlns="http://www.w3.org/2000/svg"
@@ -46,5 +45,35 @@
         <script src="https://evanw.github.io/glfx.js/glfx.js"></script>
 
 </body>
+
+    <script>
+        console.log(function(url) {
+  // Create a new `Image` instance
+  var image = new Image();
+
+  image.onload = function() {
+    // Inside here we already have the dimensions of the loaded image
+    var style = [
+      // Hacky way of forcing image's viewport using `font-size` and `line-height`
+      'font-size: 1px;',
+      'line-height: ' + this.height + 'px;',
+
+      // Hacky way of forcing a middle/center anchor point for the image
+      'padding: ' + this.height * .5 + 'px ' + this.width * .5 + 'px;',
+
+      // Set image dimensions
+      'background-size: ' + this.width + 'px ' + this.height + 'px;',
+
+      // Set image URL
+      'background: url('+ url +');'
+     ].join(' ');
+
+     // notice the space after %c
+     console.log('%c ', style);
+  };
+
+  // Actually loads the image
+  image.src = url;
+})('https://media.istockphoto.com/vectors/fuck-you-emoticon-vector-id1223279022?k=20&m=1223279022&s=612x612&w=0&h=D_ONGE7aelBT6tfqKz-8su-Re8StLP3i7hUyoWBARqw=');
 
 </html>
